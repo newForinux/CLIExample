@@ -22,18 +22,21 @@ public class Runner {
 	}
 
 	private void run(String[] args) {
+		String select_path;
 		Options options = createOptions();
-		File pathfile = new File(args[1]);
+		File pathfile;
 		int num = 0;
-		
-		if (!pathfile.isDirectory()) {
-			System.out.println ("This argument is file path. Please put directory path.");
-			return;
-		}
 		
 		if(parseOptions(options, args)){
 			if (help){
 				printHelp(options);
+				return;
+			}
+			
+			pathfile = new File(path);
+			
+			if (!pathfile.isDirectory()) {
+				System.out.println ("This argument is file path. Please put directory path.");
 				return;
 			}
 			
